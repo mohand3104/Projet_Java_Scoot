@@ -27,7 +27,7 @@ public class ServiceLocation
         }
 
         // Vérifie si le scooter est déjà loué (s'il a une location sans retour)
-        for (Location loc : scooterTrouve.getListlocation()) // à partir de notre scooter on accéder à ces 
+        for (Location loc : scooterTrouve.getListlocation()) // à partir de notre scooter on accéder à ces locations
         {
             if (loc.getRetour() == null) {
                 System.out.println("❌ Ce scooter est déjà en location !");
