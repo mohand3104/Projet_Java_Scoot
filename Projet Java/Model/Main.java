@@ -1,4 +1,4 @@
-import java.util.*;
+/*import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -53,5 +53,24 @@ public class Main {
         System.out.println("Scooter loué: " + scooter1.getId_Scooter() + ", modèle: " + scooter1.getModels().getNom_model()+"Marque: " + scooter1.getModels().getListMarques().get(0).getNomMarque());
         System.out.println("Parc: " + parc1.getNom());
         System.out.println("Catégorie du permis: " + catA.getTypePermis());
+    }
+}
+*/
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        Parc parc = new Parc("Parc Central");
+
+        // Exemple de scooter et client
+        Models model = new Models("XPro", 125, new Categories("A1"));
+        Scooter scooter = new Scooter(1, 5000, 20.0f, 150.0f, parc, model);
+        parc.addScooter(scooter);
+
+        Client client = new Client("Doe", "John", "0612345678", 101, parc);
+        parc.addClient(client);
+
+        // Appel de la fonction louer
+        ServiceLocation.louerScooter(parc, client, scanner);
     }
 }
