@@ -14,14 +14,17 @@ public class ServiceLocation
         Scooter scooterTrouve = null; // type scotter pour sauvegarder si trouvé
 
         // Recherche du scooter dans le parc
-        for (Scooter scooter : parc.getListScooter()) {
-            if (scooter.getId_Scooter() == id_scooter) {
-                scooterTrouve = scooter;
+        for (Scooter scooter : parc.getListScooter()) //récupére la liste des scotter du parc
+        {
+            if (scooter.getId_Scooter() == id_scooter) //chercher notre scooter à partir de cette liste 
+            {
+                scooterTrouve = scooter;// notre scotter
                 break;
             }
         }
 
-        if (scooterTrouve == null) {
+        if (scooterTrouve == null) 
+        {
             System.out.println("❌ Scooter introuvable !");
             return;
         }
