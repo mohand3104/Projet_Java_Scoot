@@ -32,20 +32,19 @@ public class ServiceLocation
         // Vérifie si le scooter est déjà loué (s'il a une location sans retour)
         for (Location loc : scooterTrouve.getListlocation()) // à partir de notre scooter on accéder à ces locations
         {
-            if (loc.getRetour() == null) {
+            if (loc.getRetour() == null) //si il y a pas de date de retour
+            {
                 System.out.println("❌ Ce scooter est déjà en location !");
                 return;
             }
         }
-
+//sinon
         try {
             System.out.print("Date de début (jj/mm/aaaa) : ");
-            String dateDebutStr = scanner.nextLine();
-            Date date_debut = new SimpleDateFormat("dd/MM/yyyy").parse(dateDebutStr);
+            String dateDebutStr = scanner.nextLine(); //format string
+            Date date_debut = new SimpleDateFormat("dd/MM/yyyy").parse(dateDebutStr); //conversion vers Date
 
-            System.out.print("Kilométrage initial : ");
-            int km_initial = scanner.nextInt();
-            scanner.nextLine();
+            int km_initial = scooterTrouve.getKilometrage(); // récupéré automatiquement
 
             System.out.print("Date de retour prévue (jj/mm/aaaa) : ");
             String dateRetourStr = scanner.nextLine();
