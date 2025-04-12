@@ -59,6 +59,7 @@ public class ServiceLocation
             
             // Mettre à jour le statut du scooter pour qu'il soit en location
             scooterTrouve.setEnLocation(true); // Le scooter est désormais en location
+ 
 
             System.out.println("✅ Location enregistrée avec succès !");
 
@@ -70,7 +71,7 @@ public class ServiceLocation
 
 
     
-    public void retournerScooter(Scanner scanner) //Retoure du scooter
+    public void retournerScooter(Parc parc,Scanner scanner) //Retoure du scooter
     {
     System.out.print("🔎 Entrez l'identifiant du scooter à retourner : ");
     int idRecherche = scanner.nextInt();
@@ -133,6 +134,7 @@ public class ServiceLocation
 
         // Marquer le scooter comme disponible
         scooterTrouve.setEnLocation(false); // Mettre à jour le statut du scooter
+        
 
         System.out.println("✅ Scooter retourné avec succès !");
         System.out.println("📈 Kilométrage ajouté : " + kmEffectue + " km");
@@ -141,6 +143,7 @@ public class ServiceLocation
         System.out.println("❌ Erreur de saisie.");
     }
 }
+
 
 }
 
