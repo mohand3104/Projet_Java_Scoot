@@ -13,6 +13,8 @@ public class Scooter {
     private Parc parc;
     private Vector<Location>Listlocation=new Vector<Location>();
     private Models model;
+    private boolean enLocation; // Ajout de l'attribut pour suivre la location
+
 
 
     public Scooter(int id_scooter,int kilometrage,float tarifs,float caution,Parc parc,Models model) {
@@ -82,6 +84,14 @@ public class Scooter {
     
     public void setModels(Models models) {
         this.model = model;
+    }
+
+    public void setEnLocation(boolean enLocation) {
+        this.enLocation = enLocation;
+    }
+
+    public boolean isEnLocation() {
+        return enLocation;
     }
     
     
