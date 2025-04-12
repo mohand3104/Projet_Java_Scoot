@@ -56,6 +56,9 @@ public class ServiceLocation
             // Lier la location au scooter et au client
             scooterTrouve.Location(location); // méthode déjà présente dans ta classe Scooter
             client.addLocation(location);     // méthode déjà présente dans Client
+            
+            // Mettre à jour le statut du scooter pour qu'il soit en location
+            scooterTrouve.setEnLocation(true); // Le scooter est désormais en location
 
             System.out.println("✅ Location enregistrée avec succès !");
 
