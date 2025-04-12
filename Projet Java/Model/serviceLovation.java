@@ -128,8 +128,12 @@ public class ServiceLocation
         Retour retour = new Retour(dateRetour, kmRetour, derniereLocation);
         derniereLocation.setRetour(retour);
 
+        // Marquer le scooter comme disponible
+        scooterTrouve.setEnLocation(false); // Mettre à jour le statut du scooter
+
         System.out.println("✅ Scooter retourné avec succès !");
         System.out.println("📈 Kilométrage ajouté : " + kmEffectue + " km");
+        System.out.println("🔄 Le scooter est maintenant disponible.");
     } catch (Exception e) {
         System.out.println("❌ Erreur de saisie.");
     }
