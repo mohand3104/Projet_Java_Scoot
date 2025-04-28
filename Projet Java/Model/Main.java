@@ -1,59 +1,59 @@
-package models;
-import java.util.*;
-
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) 
-    {
-        // Création du parc et des scooters
-        Parc parc = new Parc("azazga"); 
-        Categories cat =new Categories("A12");
-        Models a = new Models("Bugatti",14,cat);
-        Client client = new Client("Jean","Dupont","0605630518",1);  
+    public static void main(String[] args) {
+        Parc parc = new Parc("LOUSCOOT");
+        Categories cat = new Categories("A1");
+        Models model = new Models("Bugatti", 125, cat);
 
-        // Création de quelques scooters
-        Scooter scooter1 = new Scooter(1,1234,2,3,parc,a); 
-        Scooter scooter2 = new Scooter(2,1234,2,3,parc,a);
-        
-        // Ajout des scooters au parc
-        parc.addScooter(scooter1);
-        parc.addScooter(scooter2);
-
-        // Affichage des scooters disponibles avant la location
-        System.out.println("Scooters disponibles avant location:");
-        for (Scooter scooter : parc.getListScooter()) {
-            if (!scooter.isEnLocation()) 
-            { // Si le scooter n'est pas en location
-                System.out.println(scooter); // Affiche les informations du scooter
-            }
-        }
+        Client client = new Client("Jean", "Dupont", "0605630518", 1);
 
 
-        // Créer un scanner pour les saisies utilisateur
+
+        ServiceLocation serviceLocation = new ServiceLocation();
         Scanner scanner = new Scanner(System.in);
 
-        // Tester la méthode louerScooter via la classe ServiceLocation
-        System.out.println("\n== Test de la méthode louerScooter ==\n");
-        ServiceLocation.louerScooter(parc, client, scanner);  // Louer un scooter via la classe ServiceLocation
+        boolean continuer = true;
 
-        // Affichage des scooters après location
-        System.out.println("\nScooters après location:");
-        for (Scooter scooter : parc.getListScooter()) {
-            if (!scooter.isEnLocation()) 
-            { // Si le scooter n'est pas en location
-                System.out.println(scooter); // Affiche les informations du scooter
+        while (continuer) {
+            System.out.println("\n========= MENU LOUSCOOT =========");
+            System.out.println("1. Louer un scooter");
+            System.out.println("2. Retourner un scooter");
+            System.out.println("3. État d'un scooter");
+            System.out.println("4. Affichage de l'état du parc de scooters");
+            System.out.println("5. Ajouter ou Retirer un scooter du parc");
+            System.out.println("6. Quitter");
+            System.out.print("Votre choix : ");
+
+            int choix = scanner.nextInt();
+            scanner.nextLine(); // consommer retour ligne
+
+            switch (choix) {
+                case 1:
+                    serviceLocation.louerScooter(parc, scanner);
+                    break;
+                case 2:
+                    serviceLocation.retournerScooter(parc, scanner);
+                    break;
+                case 3:
+                    parc.etatScooter(scanner);
+                    break;
+                case 4:
+                    parc.afficherParc();
+                    break;
+                case 5:
+                    parc.gererScooters(scanner);
+                    break;
+                case 6:
+                    System.out.println("✅ Sauvegarde et fermeture du programme...");
+                    parc.sauvegarderParcDansFichier();
+                    continuer = false;
+                    break;
+                default:
+                    System.out.println("❌ Choix invalide. Essayez encore !");
             }
         }
 
-        // Tester la méthode retournerScooter via la classe ServiceLocation
-        System.out.println("\n== Test de la méthode retournerScooter ==\n");
-        ServiceLocation serviceLocation = new ServiceLocation();
-		serviceLocation.retournerScooter(parc,scanner);  // Retourner un scooter via la classe ServiceLocation
-
-        // Affichage des scooters après le retour
-        System.out.println("\nScooters après retour:");
-        for (Scooter scooter : parc.getListScooter()) {
-            System.out.println(scooter);
-        }
+        scanner.close();
     }
 }
